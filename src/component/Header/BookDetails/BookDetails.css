@@ -1,0 +1,29 @@
+.all-btn{
+    /* width: 100px;
+    height: 150px; */
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+.card-img{
+    margin: 0.5rem;
+    width: 200px;
+    height: 200px;
+}
+.btn-move-to{
+    background-color: skyblue;
+    padding: 0.2rem;
+}
+.btn-actions{
+   /* position: relative; */
+}
+.all-btn button{
+    /* position: absolute; */
+    left: 1rem;
+    padding: 0.2rem;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid;
+}
