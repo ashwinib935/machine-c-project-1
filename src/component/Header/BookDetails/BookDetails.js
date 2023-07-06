@@ -25,6 +25,7 @@ function BookDetails({ book }) {
             <div className="all-btn">
               <select
                 onChange={(e) => handleFilterChoice(e.target.value, book._id)}
+                defaultValue={book.category}
               >
                 <option value="none" selected disabled hidden>
                   Select Option

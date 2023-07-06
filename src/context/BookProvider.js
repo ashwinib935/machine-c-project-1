@@ -100,31 +100,33 @@ const allBooks = [
 export const BookContext = createContext();
 function BookProvider({ children }) {
   const [books, setBooks] = useState(allBooks);
+  const [searchBook, setSearchBook] = useState([]);
   const handleFilterChoice = (selectedCategory, id) => {
-    console.log(selectedCategory, id);
-    if (selectedCategory !== "None") {
-      const newBooks = books.reduce(
-        (acc, curr) =>
-          curr._id === id
-            ? [...acc, { ...curr, category: selectedCategory }]
-            : [...acc, curr],
-        []
-      );
-      setBooks(newBooks);
-    } else {
-      setBooks(books);
-    }
+    const newBooks = books.reduce(
+      (acc, curr) =>
+        curr._id === id
+          ? [...acc, { ...curr, category: selectedCategory }]
+          : [...acc, curr],
+      []
+    );
+    setBooks(newBooks);
   };
   const handleSearch = (searchName) => {
-    const searchedBook = [...books].filter((book) =>
-      book.name.toLowerCase().includes(searchName.toLowerCase())
-    );
-    console.log(searchedBook);
-    setBooks(searchedBook);
+    if (searchName) {
+      const searchedBook = [...books].filter((book) =>
+        book.name.toLowerCase().includes(searchName.toLowerCase())
+      );
+      console.log(searchedBook);
+      setSearchBook(searchedBook);
+    } else {
+      setSearchBook([]);
+    }
   };
 
   return (
-    <BookContext.Provider value={{ handleFilterChoice, books, handleSearch }}>
+    <BookContext.Provider
+      value={{ handleFilterChoice, books, handleSearch, searchBook }}
+    >
       {children}
     </BookContext.Provider>
   );

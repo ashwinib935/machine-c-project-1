@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useBook } from "../../context/BookProvider";
 import "./Search.css";
 function Search() {
-  const { handleSearch, books } = useBook();
+  const { handleSearch, searchBook } = useBook();
   return (
     <div>
       <h1>Search Book</h1>
@@ -19,7 +19,7 @@ function Search() {
       <h2>Books</h2>
       <div className="search-container">
         <div className="book-container">
-          {books?.map((book) => (
+          {searchBook?.map((book) => (
             <div class="card">
               <img class="card-img" src={book.image} alt="" />
               <div class="card-info">
